@@ -11,24 +11,24 @@ public class Rental
 		_daysRented = daysRented;
 	}
 
-    static double getAmount(Rental each) {
+    public double getAmount() {
         double thisAmount = 0;
 
         // determine amounts for each line
-        switch (each.getMovie().getPriceCode())
+        switch (getMovie().getPriceCode())
         {
             case REGULAR:
                 thisAmount += 2;
-                if (each.getDaysRented() > 2)
-                    thisAmount += (each.getDaysRented() - 2) * 1.5;
+                if (getDaysRented() > 2)
+                    thisAmount += (getDaysRented() - 2) * 1.5;
                 break;
             case NEW_RELEASE:
-                thisAmount += each.getDaysRented() * 3;
+                thisAmount += getDaysRented() * 3;
                 break;
             case CHILDRENS:
                 thisAmount += 1.5;
-                if (each.getDaysRented() > 3)
-                    thisAmount += (each.getDaysRented() - 3) * 1.5;
+                if (getDaysRented() > 3)
+                    thisAmount += (getDaysRented() - 3) * 1.5;
                 break;
         }
         return thisAmount;
