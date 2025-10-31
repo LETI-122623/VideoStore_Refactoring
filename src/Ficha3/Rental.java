@@ -11,6 +11,16 @@ public class Rental
 		_daysRented = daysRented;
 	}
 
+    public Movie getMovie()
+    {
+        return _movie;
+    }
+
+    public int getDaysRented()
+    {
+        return _daysRented;
+    }
+
     public double getAmount() {
         double thisAmount = 0;
 
@@ -33,16 +43,6 @@ public class Rental
         }
         return thisAmount;
     }
-
-    public int getDaysRented()
-	{
-		return _daysRented;
-	}
-
-	public Movie getMovie()
-	{
-		return _movie;
-	}
 
     public int getFrequentRentalPoints()
     {
