@@ -7,29 +7,18 @@ public class Customer
 	private String			_name;
 	private Vector<Rental>	_rentals	= new Vector<Rental>();
 
-	public Customer(String _name)
-	{
-		this._name = _name;
-	}
+	public Customer(String _name) { this._name = _name; }
 
-	public void addRental(Rental arg)
-	{
-		_rentals.addElement(arg);
-	}
+	public void addRental(Rental arg) { _rentals.addElement(arg); }
 
-	public String getName()
-	{
-		return _name;
-	}
+	public String getName()  { return _name; }
 
 	public String statement()
 	{
-
         // header
 		String result = "Rental Record for " + getName() + "\n";
 		
 		for (Rental each: _rentals)
-            // show figures for this rental
 			result += "\t" + each.getMovie().getTitle() + "\t" + each.getAmount() + "\n";
 
 		// add footer lines
@@ -37,6 +26,25 @@ public class Customer
 		result += "You earned " + getFrequentRenterPoints() + " frequent renter points";
 		return result;
 	}
+
+    public String htmlStatement()
+    {
+        // header
+        String result = "<font size=\"5\" face=\"Georgia, Arial, Garamond\" color=\"green\">\n";
+        result += "<h2>Rental Record for <i>" + getName() + "</i></h2>\n";
+
+        result += "<ul>\n";
+        for (Rental each : _rentals)
+            result += "\t<li>" + each.getMovie().getTitle() + "\t" + each.getAmount()+"\n";
+        result += "</ul>\n";
+
+        // add footer lines
+        result += "Amount owed is " + getTotalAmount() + "<br>\n";
+        result += "You earned " + getFrequentRenterPoints() + " frequent renter points<br>\n";
+        result += "</font>\n";
+
+        return result;
+    }
 
     private int getFrequentRenterPoints() {
         int frequentRenterPoints = 0;
